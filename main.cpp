@@ -4,6 +4,8 @@
 #include <vector>
 using namespace std;
 
+int Menu();
+
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villagerDetails;
@@ -44,20 +46,30 @@ int main() {
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
+
     int choice = Menu();
     while (choice != 4) {
         if (choice == 1) {
-            for (auto [name, details] : villagerDetails) {
-                
+            for (auto& [name, details] : villagerDetails) {
+                if (get<0>(details) < 10) {
+                    get<0>(details) += 1;
+                }
             }
-        
         }   
         if (choice == 2) {
-            
+            for (auto& [name, details] : villagerDetails) {
+                if (get<0>(details) > 0){
+                    get<0>(details) -= 1;
+                }
+            }
         }
         if (choice == 3) {
-            
+            cout << "enter name of villager below:" << endl;
+            cin >> searchKey;
+
         }
+
+        cout << "Villager details: ";
 
         int choice = Menu();
     }
@@ -82,12 +94,6 @@ int Menu() {
         cout << "Please choose a valid option" << endl;
         cin >> choice;
     }
-
-    return choice;
-}
-
-int Select() {
-    int choice;
 
     return choice;
 }
