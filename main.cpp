@@ -19,7 +19,6 @@ int main() {
     for (auto [name, details] : villagerDetails) {
         cout << name << ": ";
         cout << get<1>(details) << " ";
-
         cout << endl;
     }
 
@@ -28,9 +27,7 @@ int main() {
     for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
                                                it != villagerDetails.end(); ++it) {
         cout << it->first << ": ";
-        for (auto detail : it->second) {
-            cout << detail << " ";
-        }
+        cout << get<1>(it->second) << " ";
         cout << endl;
     }
 
@@ -42,9 +39,8 @@ int main() {
     auto it = villagerDetails.find(searchKey);
     if (it != villagerDetails.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto detail : it->second)  // range loop to traverse the value/vector
-            cout << detail << " ";
+        cout << "\nFound " << searchKey << "'s species: ";
+        cout << get<1>(it->second) << " ";
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
