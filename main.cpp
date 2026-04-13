@@ -47,6 +47,7 @@ int main() {
     } else
         cout << endl << searchKey << " not found." << endl;
 
+    cout << endl << "Menu driven part" << endl << endl;
     int choice = Menu();
     while (choice != 4) {
         if (choice == 1) {
@@ -66,12 +67,28 @@ int main() {
         if (choice == 3) {
             cout << "enter name of villager below:" << endl;
             cin >> searchKey;
-
+            // search for an element using .find() to avoid errors
+            auto it = villagerDetails.find(searchKey);
+            if (it != villagerDetails.end()) {  // the iterator points to beyond the end of the map
+                                                // if searchKey is not found
+                cout << "\nFound " << searchKey << "'s details: [";
+                cout << get<0>(it->second) << ", ";
+                cout << get<1>(it->second) << ", ";
+                cout << get<2>(it->second) << "]";
+                cout << endl << endl;
+            } else
+                cout << endl << searchKey << " not found." << endl;
         }
 
-        cout << "Villager details: ";
-
-        int choice = Menu();
+        cout << "Villager details: " << endl;
+        for (auto [name, details] : villagerDetails) {
+            cout << name << " [";
+            cout << get<0>(details) << ", ";
+            cout << get<1>(details) << ", ";
+            cout << get<2>(details) << "]";
+            cout << endl << endl;
+        }
+        choice = Menu();
     }
 
     // report size, clear, report size again to confirm map operations
