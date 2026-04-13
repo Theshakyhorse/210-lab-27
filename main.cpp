@@ -15,21 +15,21 @@ int main() {
     villagerDetails.insert({"Marshal", tuple(7, "Shark", "Never give up")});
 
     // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerDetails) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
+    cout << "Villagers and their species (range-based for loop):" << endl;
+    for (auto [name, details] : villagerDetails) {
+        cout << name << ": ";
+        cout << get<1>(details) << " ";
+
         cout << endl;
     }
 
     // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerDetails.begin(); 
+    cout << "\nVillagers and their species (iterators):" << endl;
+    for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
                                                it != villagerDetails.end(); ++it) {
         cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
+        for (auto detail : it->second) {
+            cout << detail << " ";
         }
         cout << endl;
     }
