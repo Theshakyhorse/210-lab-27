@@ -9,7 +9,7 @@ int main() {
     map<string, tuple<int, string, string>> villagerDetails;
 
     // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
+    // note how the right-hand side of the assignment are the tuple elements
     villagerDetails["Audie"] = make_tuple(5, "Lion", "Better late than never");
     villagerDetails["Raymond"] = make_tuple(2, "Human", "Always try your best");
     villagerDetails.insert({"Marshal", tuple(7, "Shark", "Never give up")});
@@ -44,6 +44,23 @@ int main() {
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
+    int choice = Menu();
+    while (choice != 4) {
+        if (choice == 1) {
+            for (auto [name, details] : villagerDetails) {
+                
+            }
+        
+        }   
+        if (choice == 2) {
+            
+        }
+        if (choice == 3) {
+            
+        }
+
+        int choice = Menu();
+    }
 
     // report size, clear, report size again to confirm map operations
     cout << "\nSize before clear: " << villagerDetails.size() << endl;
@@ -51,4 +68,26 @@ int main() {
     cout << "Size after clear: " << villagerDetails.size() << endl;
 
     return 0;
+}
+
+int Menu() {
+    int choice;
+    cout << "1. Increase Friendship" << endl;
+    cout << "2. Decrease Friendship" << endl;
+    cout << "3. Search for Villager" << endl;
+    cout << "4. Exit" << endl;
+    cin >> choice;
+    cout << endl;
+    while ((choice < 1) && (choice > 4)){
+        cout << "Please choose a valid option" << endl;
+        cin >> choice;
+    }
+
+    return choice;
+}
+
+int Select() {
+    int choice;
+
+    return choice;
 }
